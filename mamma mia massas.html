@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mamma Mia Massas - Uma Mostra de Massas Frescas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos personalizados para o background */
+        body {
+            background-image: url('fundo.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        /* Animação para os cards */
+        .card-animation {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-animation:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos do Modal */
+        .modal {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+        }
+        .modal-content {
+            animation: fadeInScale 0.3s ease-in-out;
+            max-height: 90vh; /* Limite a altura do modal */
+            overflow-y: auto; /* Adiciona scroll se o conteúdo for muito longo */
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <nav class="bg-gray-900 bg-opacity-80 backdrop-blur-md sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo.png" alt="Mamma Mia Massas Logo" class="h-10 w-10 md:h-12 md:w-12 mr-3">
+                <span class="text-xl md:text-2xl font-bold tracking-wider">Mamma Mia Massas</span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-lg font-medium">
+                <a href="#principal" class="hover:text-amber-500 transition-colors duration-300">Início</a>
+                <a href="#cardapio" class="hover:text-amber-500 transition-colors duration-300">Cardápio</a>
+                <a href="#contato" class="hover:text-amber-500 transition-colors duration-300">Contato</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-button" class="text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-90 py-4">
+            <a href="#principal" class="block px-6 py-2 text-center text-lg font-medium hover:bg-gray-800 transition-colors duration-300">Início</a>
+            <a href="#cardapio" class="block px-6 py-2 text-center text-lg font-medium hover:bg-gray-800 transition-colors duration-300">Cardápio</a>
+            <a href="#contato" class="block px-6 py-2 text-center text-lg font-medium hover:bg-gray-800 transition-colors duration-300">Contato</a>
+        </div>
+    </nav>
+
+    <main id="principal" class="container mx-auto px-6 py-20 min-h-screen flex flex-col justify-center items-center text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-amber-500 drop-shadow-lg">
+            Mamma Mia Massas
+        </h1>
+        <p class="text-xl md:text-2xl font-light max-w-3xl mb-8">
+            Uma celebração da autêntica culinária italiana. Descubra a tradição e o sabor de massas frescas feitas à mão, com receitas que atravessam gerações.
+        </p>
+        <a href="#cardapio" class="bg-amber-500 text-gray-900 px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:bg-amber-600 transition-colors duration-300 transform hover:scale-105">
+            Descubra Nossas Receitas
+        </a>
+    </main>
+
+    <section id="cardapio" class="container mx-auto px-6 py-20">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-amber-500">Cardápio de Receitas Tradicionais</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div id="ricota-card" class="bg-gray-800 bg-opacity-70 p-6 rounded-xl shadow-lg hover:shadow-2xl card-animation cursor-pointer">
+                <h3 class="text-2xl font-semibold mb-2 text-amber-400">Ricota e Espinafre</h3>
+                <p class="text-gray-300">Recheio cremoso e suave, envolto em massa fresca. Um clássico da culinária vegetariana italiana.</p>
+            </div>
+
+            <div id="capeletti-card" class="bg-gray-800 bg-opacity-70 p-6 rounded-xl shadow-lg hover:shadow-2xl card-animation cursor-pointer">
+                <h3 class="text-2xl font-semibold mb-2 text-amber-400">Capeletti in Brodo</h3>
+                <p class="text-gray-300">Massa recheada, servida em um caldo saboroso. Um abraço quente em forma de prato.</p>
+            </div>
+
+            <div id="bolonhesa-card" class="bg-gray-800 bg-opacity-70 p-6 rounded-xl shadow-lg hover:shadow-2xl card-animation cursor-pointer">
+                <h3 class="text-2xl font-semibold mb-2 text-amber-400">Talharim à Bolonhesa</h3>
+                <p class="text-gray-300">Talharim fresco coberto com um ragu de carne de cozimento lento e encorpado. Um ícone da Itália.</p>
+            </div>
+
+            <div id="nhoque-card" class="bg-gray-800 bg-opacity-70 p-6 rounded-xl shadow-lg hover:shadow-2xl card-animation cursor-pointer">
+                <h3 class="text-2xl font-semibold mb-2 text-amber-400">Nhoque de Batata ao Sugo</h3>
+                <p class="text-gray-300">Nhoques macios e leves, banhados em um molho de tomate fresco e aromático. Simples e delicioso.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="ricota-modal" class="modal fixed inset-0 flex items-center justify-center p-4 hidden">
+        <div class="modal-content bg-gray-900 text-white rounded-lg shadow-2xl p-8 max-w-2xl w-full relative">
+            <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold text-amber-500 mb-4">Ricota e Espinafre</h2>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Ingredientes (para a massa)</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-300">
+                        <li>250 g de farinha de trigo</li>
+                        <li>100 g de semolina</li>
+                        <li>2 ovos inteiros e 5 gemas</li>
+                        <li>1 colher de sopa de água fria</li>
+                        <li>1 colher de chá de sal</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Ingredientes (para o recheio)</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-300">
+                        <li>500 g de folhas de espinafre</li>
+                        <li>300 g de ricota fresca</li>
+                        <li>½ xícara de queijo parmesão ralado</li>
+                        <li>Noz-moscada, sal e pimenta-do-reino a gosto</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Modo de preparo</h4>
+                    <p class="text-gray-300">
+                        **Massa:** Misture todos os ingredientes da massa até formar uma mistura homogênea. Sove por cerca de 10-15 minutos até a massa ficar elástica. Deixe descansar por 30 minutos na geladeira. Abra a massa em folhas finas.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        **Recheio:** Refogue o espinafre, escorra bem e pique finamente. Misture o espinafre com a ricota, o queijo parmesão e os temperos.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        **Montagem:** Recheie as folhas de massa com a mistura de ricota e espinafre, moldando o formato desejado (ravioli, rondelli, etc.). Cozinhe em água fervente com sal até que subam à superfície. Sirva com o molho de sua preferência (sugestão: manteiga e sálvia).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="capeletti-modal" class="modal fixed inset-0 flex items-center justify-center p-4 hidden">
+        <div class="modal-content bg-gray-900 text-white rounded-lg shadow-2xl p-8 max-w-2xl w-full relative">
+            <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold text-amber-500 mb-4">Capeletti in Brodo</h2>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Ingredientes</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-300">
+                        <li>500 g de capeletti (de carne ou frango)</li>
+                        <li>2 litros de caldo de carne (brodo)</li>
+                        <li>1 cenoura, 1 cebola e 1 talo de salsão (para o caldo)</li>
+                        <li>Sal, pimenta e queijo parmesão ralado a gosto</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Modo de preparo</h4>
+                    <p class="text-gray-300">
+                        **Caldo (Brodo):** Em uma panela grande, cozinhe os vegetais com a carne (músculo, frango) em 2 litros de água por pelo menos 1 hora para obter um caldo rico e saboroso. Coe o caldo para remover os sólidos.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        **Preparo:** Leve o caldo coado para ferver novamente. Adicione os capelettis e cozinhe por cerca de 5-7 minutos, ou conforme as instruções da embalagem, até que fiquem al dente.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        **Servir:** Sirva o capeletti in brodo bem quente, em tigelas individuais. Finalize com queijo parmesão ralado e salsinha picada, se desejar.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bolonhesa-modal" class="modal fixed inset-0 flex items-center justify-center p-4 hidden">
+        <div class="modal-content bg-gray-900 text-white rounded-lg shadow-2xl p-8 max-w-2xl w-full relative">
+            <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold text-amber-500 mb-4">Talharim à Bolonhesa</h2>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Ingredientes</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-300">
+                        <li>500 g de talharim fresco</li>
+                        <li>500 g de carne moída (patinho ou acém)</li>
+                        <li>1 cebola média picada</li>
+                        <li>2 dentes de alho picados</li>
+                        <li>1 lata de molho de tomate (passata)</li>
+                        <li>Sal e pimenta-do-reino a gosto</li>
+                        <li>Azeite ou manteiga para refogar</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Modo de preparo</h4>
+                    <p class="text-gray-300">
+                        **Molho:** Em uma panela, aqueça o azeite e refogue a cebola e o alho até dourarem. Adicione a carne moída e frite até que mude de cor. Adicione o molho de tomate, sal e pimenta. Cozinhe em fogo baixo por pelo menos 20 minutos para que o molho encorpe e os sabores se misturem.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        **Massa:** Cozinhe o talharim em água fervente com sal até que fique "al dente". Escorra a massa e transfira-a para uma travessa.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        **Servir:** Cubra o talharim com o molho à bolonhesa. Finalize com queijo parmesão ralado e sirva imediatamente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nhoque-modal" class="modal fixed inset-0 flex items-center justify-center p-4 hidden">
+        <div class="modal-content bg-gray-900 text-white rounded-lg shadow-2xl p-8 max-w-2xl w-full relative">
+            <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <h2 class="text-3xl font-bold text-amber-500 mb-4">Nhoque de Batata ao Sugo</h2>
+            <div class="space-y-6">
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Ingredientes (para o nhoque)</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-300">
+                        <li>500 g de batata cozida e amassada</li>
+                        <li>1 xícara de farinha de trigo</li>
+                        <li>1 gema de ovo</li>
+                        <li>Sal e noz-moscada a gosto</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Ingredientes (para o molho Sugo)</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-300">
+                        <li>1 cebola picada</li>
+                        <li>2 dentes de alho</li>
+                        <li>1 kg de tomates maduros (ou 1 lata de tomate pelado)</li>
+                        <li>Azeite, sal e pimenta-do-reino a gosto</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xl font-semibold text-amber-400 mb-2">Modo de preparo</h4>
+                    <p class="text-gray-300">
+                        **Nhoque:** Misture a batata amassada com a gema, a farinha, o sal e a noz-moscada. Sove delicadamente até obter uma massa homogênea. Modele pequenos cilindros e corte os nhoques. Cozinhe em água fervente com sal.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        **Molho:** Refogue a cebola e o alho no azeite. Adicione o tomate picado (ou o tomate pelado), tempere com sal e pimenta. Cozinhe em fogo baixo por cerca de 10-15 minutos.
+                    </p>
+                    <p class="text-gray-300 mt-2">
+                        **Servir:** Quando os nhoques subirem à superfície da água, retire-os e adicione-os diretamente no molho de tomate. Sirva imediatamente, com queijo ralado.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contato" class="bg-gray-900 bg-opacity-80 py-10 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <img src="logo.png" alt="Mamma Mia Massas Logo" class="h-12 w-12 mx-auto mb-4">
+            <p class="text-gray-400 text-lg">&copy; 2025 Mamma Mia Massas. Todos os direitos reservados.</p>
+            <div class="mt-4 text-gray-400">
+                <p>Mostra de Massas Frescas Italianas</p>
+                <p class="mt-2">Contato: mostra@mammamiamassas.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica do menu mobile
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const navLinks = mobileMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Lógica dos modais
+        const cards = document.querySelectorAll('[id$="-card"]');
+        const modals = document.querySelectorAll('.modal');
+        const closeButtons = document.querySelectorAll('.modal-close');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.id.replace('-card', '-modal');
+                document.getElementById(modalId).classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Evita scroll no corpo
+            });
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.closest('.modal').classList.add('hidden');
+                document.body.style.overflow = ''; // Restaura o scroll
+            });
+        });
+
+        modals.forEach(modal => {
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
